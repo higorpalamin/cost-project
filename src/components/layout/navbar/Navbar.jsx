@@ -9,21 +9,21 @@ function Navbar() {
   return (
     <nav className={styles.navbar}>
       <Container>
-        <Link to="/">
+        <Link to="/cost-project">
           <img src={logo} alt="Cost" />
         </Link>
         <ul className={styles.list}>
           <li className={styles.item}>
-            <Link to="/">Home</Link>
+            <Link to="/cost-project">Home</Link>
           </li>
           <li className={styles.item}>
-            <Link to="/projects">Projetos</Link>
+            <Link to="/cost-project/projects">Projetos</Link>
           </li>
           <li className={styles.item}>
-            <Link to="/company">Empresa</Link>
+            <Link to="/cost-project/company">Empresa</Link>
           </li>
           <li className={styles.item}>
-            <Link to="/contact">Contato</Link>
+            <Link to="/cost-project/contact">Contato</Link>
           </li>
         </ul>
       </Container>
