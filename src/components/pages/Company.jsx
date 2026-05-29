@@ -1,8 +1,8 @@
 function Company() {
   return (
     <div>
-      <h1>Welcome to the Company Page!</h1>
-      
+      <h1>Empresa</h1>
+      <p>Página de exemplo</p>
     </div>
   );
 }
