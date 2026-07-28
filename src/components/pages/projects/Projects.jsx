@@ -9,10 +9,11 @@ import Loading from "../../layout/loading/Loading";
 import styles from "./Projects.module.css";
 import ProjectCard from "../../project/projectCard/ProjectCard";
 
+
 function Projects() {
   const [projects, setProjects] = useState([]);
   const [removeLoading, setRemoveLoading] = useState(false);
-  const [projectMessage, setProjectMessage] = useState('');
+  const [projectMessage, setProjectMessage] = useState("");
 
   const location = useLocation();
   let message = "";
@@ -22,18 +23,22 @@ function Projects() {
   }
 
   function removeProject(id) {
-    fetch(`http://localhost:5000/projects/${id}`,{
-      method: 'DELETE',
+    fetch(`http://localhost:5000/projects/${id}`, {
+      method: "DELETE",
       headers: {
-        'Content-Type' : 'application/json'
-      }
-    }).then(resp => resp.json())
-    .then((data) => {
-      setProjects(projects.filter((project) => project.id ==! id))
-    }).catch(err => console.log(err));
-    setProjectMessage('Projeto removido com sucesso');
+        "Content-Type": "application/json",
+      },
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        setProjects(projects.filter((project) => project.id == !id));
+      })
+      .catch((err) => console.log(err));
+    setProjectMessage("Projeto removido com sucesso");
   }
-  {/* executa apenas uma vez a chamada ao banco*/}
+  {
+    /* executa apenas uma vez a chamada ao banco*/
+  }
   useEffect(() => {
     setTimeout(() => {
       fetch("http://localhost:5000/projects", {

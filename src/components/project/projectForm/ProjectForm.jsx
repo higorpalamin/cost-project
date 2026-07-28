@@ -5,22 +5,34 @@ import SubmitButton from "../../form/submit/SubmitButton";
 
 import styles from "./ProjectForm.module.css";
 
+const categories_db = [
+  {
+    id: "1",
+    name: "Infra",
+  },
+  {
+    id: "2",
+    name: "Desenvolvimento",
+  },
+  {
+    id: "3",
+    name: "Design",
+  },
+  {
+    id: "4",
+    name: "Planejamento",
+  },
+];
+
 function ProjectForm({ handleSubmit, btnText, projectData }) {
   const [categories, setCategories] = useState([]);
-  const [project, setProject] = useState(projectData || { name: "", budget: "", category: null });
+  const [project, setProject] = useState(
+    projectData || { name: "", budget: "", category: null },
+  );
 
   useEffect(() => {
-    fetch("http://localhost:5000/categories", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((resp) => resp.json())
-      .then((data) => {
-        setCategories(data);
-      })
-      .catch((err) => console.log(err));
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setCategories(categories_db);
   }, []);
 
   const submit = (e) => {
@@ -34,10 +46,11 @@ function ProjectForm({ handleSubmit, btnText, projectData }) {
 
   function handleCategory(e) {
     setProject({
-      ...project, category: {
+      ...project,
+      category: {
         id: e.target.value,
         name: e.target.options[e.target.selectedIndex].text,
-      }
+      },
     });
   }
 
